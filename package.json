@@ -41,5 +41,11 @@
   },
   "main": "./packages/react-photo-view/dist/react-photo-view.js",
   "module": "./packages/react-photo-view/dist/react-photo-view.module.js",
-  "types": "./packages/react-photo-view/dist/index.d.ts"
+  "types": "./packages/react-photo-view/dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./packages/react-photo-view/dist/react-photo-view.js",
+      "import": "./packages/react-photo-view/dist/react-photo-view.module.js"
+    }
+  }
 }
