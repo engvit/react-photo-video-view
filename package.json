@@ -40,6 +40,6 @@
     "yarn": "^1.22.22"
   },
   "main": "./packages/react-photo-view/dist/react-photo-view.js",
-  "module": "./packages/react-photo-view/dist/react-photo-view.modele.js",
+  "module": "./packages/react-photo-view/dist/react-photo-view.module.js",
   "types": "./packages/react-photo-view/dist/index.d.ts"
 }
