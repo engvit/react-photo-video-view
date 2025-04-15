@@ -60,12 +60,12 @@ function x(n) {
 var y = o(void 0),
   C = 'cubic-bezier(0.25, 0.8, 0.25, 1)',
   b = 20,
-  k = 'undefined' != typeof window && 'ontouchstart' in window,
-  P = function (n, e, t) {
+  P = 'undefined' != typeof window && 'ontouchstart' in window,
+  k = function (n, e, t) {
     return Math.max(Math.min(n, t), e);
   },
   _ = function (n, e, t) {
-    return void 0 === e && (e = 0), void 0 === t && (t = 0), P(n, 1 * (1 - t), Math.max(6, e) * (1 + t));
+    return void 0 === e && (e = 0), void 0 === t && (t = 0), k(n, 1 * (1 - t), Math.max(6, e) * (1 + t));
   },
   M = 'undefined' == typeof window || /ServerSideRendering/.test(navigator && navigator.userAgent) ? a : c;
 function Y(n, e, t) {
@@ -232,8 +232,8 @@ function L(n, e) {
     );
   return (v.cancel = h), v;
 }
-var D = function (n, e, t) {
-    return B(
+var B = function (n, e, t) {
+    return O(
       n,
       e,
       t,
@@ -242,15 +242,15 @@ var D = function (n, e, t) {
         return n;
       },
       function () {
-        return B(e, n, t);
+        return O(e, n, t);
       },
     );
   },
-  O = function (n) {
+  D = function (n) {
     return 1 - Math.pow(1 - n, 4);
   };
-function B(n, e, t, r, i, o) {
-  void 0 === r && (r = 400), void 0 === i && (i = O);
+function O(n, e, t, r, i, o) {
+  void 0 === r && (r = 400), void 0 === i && (i = D);
   var a = e - n;
   if (0 !== a) {
     var c = Date.now(),
@@ -379,126 +379,127 @@ function J(e) {
     l = t.height,
     d = void 0 === l ? 0 : l,
     h = t.originRef,
-    v = e.visible,
-    f = e.speed,
-    m = e.easing,
-    p = e.wrapClassName,
-    y = e.className,
-    C = e.style,
-    b = e.loadingElement,
-    P = e.brokenElement,
-    X = e.onPhotoTap,
-    N = e.onMaskTap,
-    W = e.onReachMove,
-    S = e.onReachUp,
-    T = e.onPhotoResize,
-    V = e.isActive,
-    O = e.expose,
-    z = x(G),
-    q = z[0],
-    K = z[1],
-    J = r(0),
-    Q = j(),
-    Z = q.naturalWidth,
-    $ = void 0 === Z ? u : Z,
-    nn = q.naturalHeight,
-    en = void 0 === nn ? d : nn,
-    tn = q.width,
-    rn = void 0 === tn ? u : tn,
-    on = q.height,
-    an = void 0 === on ? d : on,
-    cn = q.loaded,
-    un = void 0 === cn ? !i : cn,
-    ln = q.broken,
-    sn = q.x,
-    dn = q.y,
-    hn = q.touched,
-    vn = q.stopRaf,
-    fn = q.maskTouched,
-    mn = q.rotate,
-    gn = q.scale,
-    pn = q.CX,
-    wn = q.CY,
-    xn = q.lastX,
-    yn = q.lastY,
-    Cn = q.lastCX,
-    bn = q.lastCY,
-    kn = q.lastScale,
-    Pn = q.touchTime,
-    _n = q.touchLength,
-    Mn = q.pause,
-    Yn = q.reach,
-    Xn = w({
+    v = t.format,
+    f = e.visible,
+    m = e.speed,
+    p = e.easing,
+    y = e.wrapClassName,
+    C = e.className,
+    b = e.style,
+    k = e.loadingElement,
+    X = e.brokenElement,
+    N = e.onPhotoTap,
+    W = e.onMaskTap,
+    S = e.onReachMove,
+    T = e.onReachUp,
+    V = e.onPhotoResize,
+    D = e.isActive,
+    z = e.expose,
+    q = x(G),
+    K = q[0],
+    J = q[1],
+    Q = r(0),
+    Z = j(),
+    $ = K.naturalWidth,
+    nn = void 0 === $ ? u : $,
+    en = K.naturalHeight,
+    tn = void 0 === en ? d : en,
+    rn = K.width,
+    on = void 0 === rn ? u : rn,
+    an = K.height,
+    cn = void 0 === an ? d : an,
+    un = K.loaded,
+    ln = void 0 === un ? !i : un,
+    sn = K.broken,
+    dn = K.x,
+    hn = K.y,
+    vn = K.touched,
+    fn = K.stopRaf,
+    mn = K.maskTouched,
+    gn = K.rotate,
+    pn = K.scale,
+    wn = K.CX,
+    xn = K.CY,
+    yn = K.lastX,
+    Cn = K.lastY,
+    bn = K.lastCX,
+    Pn = K.lastCY,
+    kn = K.lastScale,
+    _n = K.touchTime,
+    Mn = K.touchLength,
+    Yn = K.pause,
+    Xn = K.reach,
+    Nn = w({
       onScale: function (n) {
-        return Nn(_(n));
+        return Wn(_(n));
       },
       onRotate: function (n) {
-        mn !== n && (O({ rotate: n }), K(g({ rotate: n }, H($, en, n))));
+        gn !== n && (z({ rotate: n }), J(g({ rotate: n }, H(nn, tn, n))));
       },
     });
-  function Nn(n, e, t) {
-    gn !== n && (O({ scale: n }), K(g({ scale: n }, E(sn, dn, rn, an, gn, n, e, t), n <= 1 && { x: 0, y: 0 })));
+  function Wn(n, e, t) {
+    pn !== n && (z({ scale: n }), J(g({ scale: n }, E(dn, hn, on, cn, pn, n, e, t), n <= 1 && { x: 0, y: 0 })));
   }
-  var Wn = L(
+  var Sn = L(
     function (n, e, t) {
-      if ((void 0 === t && (t = 0), (hn || fn) && V)) {
-        var r = I(mn, rn, an),
+      if ((void 0 === t && (t = 0), (vn || mn) && D)) {
+        var r = I(gn, on, cn),
           i = r[0],
           o = r[1];
-        if (0 === t && 0 === J.current) {
-          var a = Math.abs(n - pn) <= 20,
-            c = Math.abs(e - wn) <= 20;
-          if (a && c) return void K({ lastCX: n, lastCY: e });
-          J.current = a ? (e > wn ? 3 : 2) : 1;
+        if (0 === t && 0 === Q.current) {
+          var a = Math.abs(n - wn) <= 20,
+            c = Math.abs(e - xn) <= 20;
+          if (a && c) return void J({ lastCX: n, lastCY: e });
+          Q.current = a ? (e > xn ? 3 : 2) : 1;
         }
         var u,
-          l = n - Cn,
-          s = e - bn;
+          l = n - bn,
+          s = e - Pn;
         if (0 === t) {
-          var d = A(l + xn, gn, i, innerWidth)[0],
-            h = A(s + yn, gn, o, innerHeight);
+          var d = A(l + yn, pn, i, innerWidth)[0],
+            h = A(s + Cn, pn, o, innerHeight);
           (u = (function (n, e, t, r) {
             return (e && 1 === n) || 'x' === r ? 'x' : (t && n > 1) || 'y' === r ? 'y' : void 0;
-          })(J.current, d, h[0], Yn)),
-            void 0 !== u && W(u, n, e, gn);
+          })(Q.current, d, h[0], Xn)),
+            void 0 !== u && S(u, n, e, pn);
         }
-        if ('x' === u || fn) return void K({ reach: 'x' });
-        var v = _(gn + ((t - _n) / 100 / 2) * gn, $ / rn, 0.2);
-        O({ scale: v }), K(g({ touchLength: t, reach: u, scale: v }, E(sn, dn, rn, an, gn, v, n, e, l, s)));
+        if ('x' === u || mn) return void J({ reach: 'x' });
+        var v = _(pn + ((t - Mn) / 100 / 2) * pn, nn / on, 0.2);
+        z({ scale: v }), J(g({ touchLength: t, reach: u, scale: v }, E(dn, hn, on, cn, pn, v, n, e, l, s)));
       }
     },
     { maxWait: 8 },
   );
-  function Sn(n) {
-    return !vn && !hn && (Q.current && K(g({}, n, { pause: v })), Q.current);
+  function Tn(n) {
+    return !fn && !vn && (Z.current && J(g({}, n, { pause: f })), Z.current);
   }
-  var Tn,
-    Vn,
+  var Vn,
     Rn,
     An,
     En,
     In,
     Hn,
     Ln,
+    Bn,
     Dn =
-      ((En = function (n) {
-        return Sn({ x: n });
-      }),
-      (In = function (n) {
-        return Sn({ y: n });
+      ((In = function (n) {
+        return Tn({ x: n });
       }),
       (Hn = function (n) {
-        return Q.current && (O({ scale: n }), K({ scale: n })), !hn && Q.current;
+        return Tn({ y: n });
       }),
-      (Ln = w({
+      (Ln = function (n) {
+        return Z.current && (z({ scale: n }), J({ scale: n })), !vn && Z.current;
+      }),
+      (Bn = w({
         X: function (n) {
-          return En(n);
-        },
-        Y: function (n) {
           return In(n);
         },
-        S: function (n) {
+        Y: function (n) {
           return Hn(n);
+        },
+        S: function (n) {
+          return Ln(n);
         },
       })),
       function (n, e, t, r, i, o, a, c, u, l, s) {
@@ -515,10 +516,10 @@ function J(e) {
         if (y >= 200 || c !== a || Math.abs(u - a) > 1) {
           var C = E(n, e, i, o, a, c),
             b = C.x,
-            k = C.y,
-            P = m ? g : b !== n ? b : null,
-            _ = w ? x : k !== e ? k : null;
-          return null !== P && B(n, P, Ln.X), null !== _ && B(e, _, Ln.Y), void (c !== a && B(a, c, Ln.S));
+            P = C.y,
+            k = m ? g : b !== n ? b : null,
+            _ = w ? x : P !== e ? P : null;
+          return null !== k && O(n, k, Bn.X), null !== _ && O(e, _, Bn.Y), void (c !== a && O(a, c, Bn.S));
         }
         var M = (n - t) / y,
           Y = (e - r) / y,
@@ -556,80 +557,80 @@ function J(e) {
             s = l[0],
             d = l[1];
           if (
-            (c && !N && ((N = !0), m ? B(r, u, Ln.X) : D(u, r + (r - u), Ln.X)),
-            s && !W && ((W = !0), w ? B(i, d, Ln.Y) : D(d, i + (i - d), Ln.Y)),
+            (c && !N && ((N = !0), m ? O(r, u, Bn.X) : B(u, r + (r - u), Bn.X)),
+            s && !W && ((W = !0), w ? O(i, d, Bn.Y) : B(d, i + (i - d), Bn.Y)),
             N && W)
           )
             return !1;
-          var f = N || Ln.X(u),
-            g = W || Ln.Y(d);
+          var f = N || Bn.X(u),
+            g = W || Bn.Y(d);
           return f && g;
         });
       }),
     On =
-      ((Tn = X),
-      (Vn = function (n, e) {
-        Yn || Nn(1 !== gn ? 1 : Math.max(2, $ / rn), n, e);
+      ((Vn = N),
+      (Rn = function (n, e) {
+        Xn || Wn(1 !== pn ? 1 : Math.max(2, nn / on), n, e);
       }),
-      (Rn = r(0)),
-      (An = L(
+      (An = r(0)),
+      (En = L(
         function () {
-          (Rn.current = 0), Tn.apply(void 0, [].slice.call(arguments));
+          (An.current = 0), Vn.apply(void 0, [].slice.call(arguments));
         },
         { wait: 300 },
       )),
       function () {
         var n = [].slice.call(arguments);
-        (Rn.current += 1), An.apply(void 0, n), Rn.current >= 2 && (An.cancel(), (Rn.current = 0), Vn.apply(void 0, n));
+        (An.current += 1), En.apply(void 0, n), An.current >= 2 && (En.cancel(), (An.current = 0), Rn.apply(void 0, n));
       });
-  function Bn(n, e) {
-    if (((J.current = 0), (hn || fn) && V)) {
-      K({ touched: !1, maskTouched: !1, pause: !1, stopRaf: !1, reach: void 0 });
-      var t = _(gn, $ / rn);
-      if ((Dn(sn, dn, xn, yn, rn, an, gn, t, kn, mn, Pn), S(n, e), pn === n && wn === e)) {
-        if (hn) return void On(n, e);
-        fn && N(n, e);
+  function Fn(n, e) {
+    if (((Q.current = 0), (vn || mn) && D)) {
+      J({ touched: !1, maskTouched: !1, pause: !1, stopRaf: !1, reach: void 0 });
+      var t = _(pn, nn / on);
+      if ((Dn(dn, hn, yn, Cn, on, cn, pn, t, kn, gn, _n), T(n, e), wn === n && xn === e)) {
+        if (vn) return void On(n, e);
+        mn && W(n, e);
       }
     }
   }
-  function Fn(n, e, t) {
+  function jn(n, e, t) {
     void 0 === t && (t = 0),
-      K({
+      J({
         touched: !0,
         CX: n,
         CY: e,
         lastCX: n,
         lastCY: e,
-        lastX: sn,
-        lastY: dn,
-        lastScale: gn,
+        lastX: dn,
+        lastY: hn,
+        lastScale: pn,
         touchLength: t,
         touchTime: Date.now(),
       });
   }
-  function jn(n) {
-    K({ maskTouched: !0, CX: n.clientX, CY: n.clientY, lastX: sn, lastY: dn });
+  function zn(n) {
+    J({ maskTouched: !0, CX: n.clientX, CY: n.clientY, lastX: dn, lastY: hn });
   }
-  Y(k ? void 0 : 'mousemove', function (n) {
-    n.preventDefault(), Wn(n.clientX, n.clientY);
+  Y(P ? void 0 : 'mousemove', function (n) {
+    n.preventDefault(), Sn(n.clientX, n.clientY);
   }),
-    Y(k ? void 0 : 'mouseup', function (n) {
-      Bn(n.clientX, n.clientY);
+    Y(P ? void 0 : 'mouseup', function (n) {
+      Fn(n.clientX, n.clientY);
     }),
     Y(
-      k ? 'touchmove' : void 0,
+      P ? 'touchmove' : void 0,
       function (n) {
         n.preventDefault();
         var e = R(n);
-        Wn.apply(void 0, e);
+        Sn.apply(void 0, e);
       },
       { passive: !1 },
     ),
     Y(
-      k ? 'touchend' : void 0,
+      P ? 'touchend' : void 0,
       function (n) {
         var e = n.changedTouches[0];
-        Bn(e.clientX, e.clientY);
+        Fn(e.clientX, e.clientY);
       },
       { passive: !1 },
     ),
@@ -637,18 +638,18 @@ function J(e) {
       'resize',
       L(
         function () {
-          un && !hn && (K(H($, en, mn)), T());
+          ln && !vn && (J(H(nn, tn, gn)), V());
         },
         { maxWait: 8 },
       ),
     ),
     M(
       function () {
-        V && O(g({ scale: gn, rotate: mn }, Xn));
+        D && z(g({ scale: pn, rotate: gn }, Nn));
       },
-      [V],
+      [D],
     );
-  var zn = (function (n, e, t, i, o, c, u, l, d, h) {
+  var qn = (function (n, e, t, i, o, c, u, l, d, h) {
       var v = (function (n, e, t, i, o) {
           var a = r(!1),
             c = x({ lead: !0, scale: t }),
@@ -736,83 +737,83 @@ function J(e) {
         y = p[0],
         C = p[1],
         b = C.W,
-        k = C.FIT,
-        P = innerWidth / 2,
+        P = C.FIT,
+        k = innerWidth / 2,
         _ = innerHeight / 2,
         Y = y < 3 || y > 4;
       return [
-        Y ? (b ? C.L : P) : i + (P - (c * l) / 2),
+        Y ? (b ? C.L : k) : i + (k - (c * l) / 2),
         Y ? (b ? C.T : _) : o + (_ - (u * l) / 2),
         f,
-        Y && k ? f * (C.H / b) : m,
+        Y && P ? f * (C.H / b) : m,
         0 === y ? g : Y ? b / (c * l) || 0.01 : g,
-        Y ? (k ? 1 : 0) : 1,
+        Y ? (P ? 1 : 0) : 1,
         y,
-        k,
+        P,
       ];
-    })(v, h, un, sn, dn, rn, an, gn, f, function (n) {
-      return K({ pause: n });
+    })(f, h, ln, dn, hn, on, cn, pn, m, function (n) {
+      return J({ pause: n });
     }),
-    qn = zn[4],
-    Kn = zn[6],
-    Un = 'transform ' + f + 'ms ' + m,
-    Gn = {
-      className: y,
-      onMouseDown: k
+    Kn = qn[4],
+    Un = qn[6],
+    Gn = 'transform ' + m + 'ms ' + p,
+    Jn = {
+      className: C,
+      onMouseDown: P
         ? void 0
         : function (n) {
-            n.stopPropagation(), 0 === n.button && Fn(n.clientX, n.clientY, 0);
+            n.stopPropagation(), 0 === n.button && jn(n.clientX, n.clientY, 0);
           },
-      onTouchStart: k
+      onTouchStart: P
         ? function (n) {
-            n.stopPropagation(), Fn.apply(void 0, R(n));
+            n.stopPropagation(), jn.apply(void 0, R(n));
           }
         : void 0,
       onWheel: function (n) {
-        if (!Yn) {
-          var e = _(gn - n.deltaY / 100 / 2, $ / rn);
-          K({ stopRaf: !0 }), Nn(e, n.clientX, n.clientY);
+        if (!Xn) {
+          var e = _(pn - n.deltaY / 100 / 2, nn / on);
+          J({ stopRaf: !0 }), Wn(e, n.clientX, n.clientY);
         }
       },
       style: {
-        width: zn[2] + 'px',
-        height: zn[3] + 'px',
-        opacity: zn[5],
-        objectFit: 4 === Kn ? void 0 : zn[7],
-        transform: mn ? 'rotate(' + mn + 'deg)' : void 0,
+        width: qn[2] + 'px',
+        height: qn[3] + 'px',
+        opacity: qn[5],
+        objectFit: 4 === Un ? void 0 : qn[7],
+        transform: gn ? 'rotate(' + gn + 'deg)' : void 0,
         transition:
-          Kn > 2 ? Un + ', opacity ' + f + 'ms ease, height ' + (Kn < 4 ? f / 2 : Kn > 4 ? f : 0) + 'ms ' + m : void 0,
+          Un > 2 ? Gn + ', opacity ' + m + 'ms ease, height ' + (Un < 4 ? m / 2 : Un > 4 ? m : 0) + 'ms ' + p : void 0,
       },
     };
   return n('div', {
-    className: 'PhotoView__PhotoWrap' + (p ? ' ' + p : ''),
-    style: C,
-    onMouseDown: !k && V ? jn : void 0,
+    className: 'PhotoView__PhotoWrap' + (y ? ' ' + y : ''),
+    style: b,
+    onMouseDown: !P && D ? zn : void 0,
     onTouchStart:
-      k && V
+      P && D
         ? function (n) {
-            return jn(n.touches[0]);
+            return zn(n.touches[0]);
           }
         : void 0,
     children: n('div', {
-      className: 'PhotoView__PhotoBox',
+      className: 'PhotoView__PhotoBox PhotoBox_' + (v || 'image'),
       style: {
-        transform: 'matrix(' + qn + ', 0, 0, ' + qn + ', ' + zn[0] + ', ' + zn[1] + ')',
-        transition: hn || Mn ? void 0 : Un,
-        willChange: V ? 'transform' : void 0,
+        transform: 'matrix(' + Kn + ', 0, 0, ' + Kn + ', ' + qn[0] + ', ' + qn[1] + ')',
+        transition: vn || Yn ? void 0 : Gn,
+        willChange: D ? 'transform' : void 0,
       },
       children: i
         ? n(
             U,
-            g({ src: i, loaded: un, broken: ln }, Gn, {
+            g({ src: i, loaded: ln, broken: sn }, Jn, {
               onPhotoLoad: function (n) {
-                K(g({}, n, n.loaded && H(n.naturalWidth || 0, n.naturalHeight || 0, mn)));
+                J(g({}, n, n.loaded && H(n.naturalWidth || 0, n.naturalHeight || 0, gn)));
               },
-              loadingElement: b,
-              brokenElement: P,
+              loadingElement: k,
+              brokenElement: X,
             }),
           )
-        : o && o({ attrs: Gn, scale: qn, rotate: mn }),
+        : o && o({ attrs: Jn, scale: Kn, rotate: gn }),
     }),
   });
 }
@@ -849,9 +850,9 @@ function Z(o) {
     I = o.maskClassName,
     H = o.photoClassName,
     L = o.photoWrapClassName,
-    D = o.loadingElement,
-    O = o.brokenElement,
-    B = o.images,
+    B = o.loadingElement,
+    D = o.brokenElement,
+    O = o.images,
     F = o.index,
     j = void 0 === F ? 0 : F,
     z = o.onIndexChange,
@@ -883,9 +884,9 @@ function Z(o) {
     yn = xn ? j : tn,
     Cn = xn ? z : rn,
     bn = r(yn),
-    kn = B.length,
-    Pn = B[yn],
-    _n = 'boolean' == typeof c ? c : kn > c,
+    Pn = O.length,
+    kn = O[yn],
+    _n = 'boolean' == typeof c ? c : Pn > c,
     Mn = (function (n, e) {
       var t = i(function (n) {
           return !n;
@@ -934,8 +935,8 @@ function Z(o) {
       changeIndex: function (n, e) {
         void 0 === e && (e = !1);
         var t = _n ? bn.current + (n - yn) : n,
-          r = kn - 1,
-          i = P(t, 0, r),
+          r = Pn - 1,
+          i = k(t, 0, r),
           o = _n ? t : i,
           a = innerWidth + b;
         nn({ touched: !1, lastCX: void 0, lastCY: void 0, x: -a * o, pause: e }),
@@ -957,14 +958,14 @@ function Z(o) {
           if (void 0 !== un) {
             var e = n - un,
               t = e;
-            !_n && ((0 === yn && e > 0) || (yn === kn - 1 && e < 0)) && (t = e / 2),
+            !_n && ((0 === yn && e > 0) || (yn === Pn - 1 && e < 0)) && (t = e / 2),
               nn({ touched: !0, lastCX: un, x: -(innerWidth + b) * bn.current + t, pause: !1 });
           } else nn({ touched: !0, lastCX: n, x: on, pause: !1 });
         })(e)
       : 'y' === n &&
         (function (n, e) {
           if (void 0 !== ln) {
-            var t = null === g ? null : P(g, 0.01, g - Math.abs(n - ln) / 100 / 4);
+            var t = null === g ? null : k(g, 0.01, g - Math.abs(n - ln) / 100 / 4);
             nn({ touched: !0, lastCY: ln, bg: 1 === e ? t : g, minimal: 1 === e });
           } else nn({ touched: !0, lastCY: n, bg: dn, minimal: !0 });
         })(t, r);
@@ -1007,26 +1008,26 @@ function Z(o) {
       },
       [n, e, t],
     );
-  })(B, yn, _n);
+  })(O, yn, _n);
   if (!Yn) return null;
   var Hn = vn && !Xn,
     Ln = q ? dn : hn,
-    Dn = pn &&
+    Bn = pn &&
       wn && {
-        images: B,
+        images: O,
         index: yn,
         visible: q,
         onClose: Sn,
         onIndexChange: Tn,
         overlayVisible: Hn,
-        overlay: Pn && Pn.overlay,
+        overlay: kn && kn.overlay,
         scale: mn,
         rotate: gn,
         onScale: pn,
         onRotate: wn,
       },
-    On = l ? l(Xn) : 400,
-    Bn = d ? d(Xn) : C,
+    Dn = l ? l(Xn) : 400,
+    On = d ? d(Xn) : C,
     Fn = l ? l(3) : 600,
     jn = d ? d(3) : C;
   return e(N, {
@@ -1049,9 +1050,9 @@ function Z(o) {
           (1 === Xn ? ' PhotoView-Slider__fadeIn' : 2 === Xn ? ' PhotoView-Slider__fadeOut' : ''),
         style: {
           background: Ln ? 'rgba(0, 0, 0, ' + Ln + ')' : void 0,
-          transitionTimingFunction: Bn,
-          transitionDuration: (an ? 0 : On) + 'ms',
-          animationDuration: On + 'ms',
+          transitionTimingFunction: On,
+          transitionDuration: (an ? 0 : Dn) + 'ms',
+          animationDuration: Dn + 'ms',
         },
         onAnimationEnd: Nn,
       }),
@@ -1059,10 +1060,10 @@ function Z(o) {
         e('div', {
           className: 'PhotoView-Slider__BannerWrap',
           children: [
-            e('div', { className: 'PhotoView-Slider__Counter', children: [yn + 1, ' / ', kn] }),
+            e('div', { className: 'PhotoView-Slider__Counter', children: [yn + 1, ' / ', Pn] }),
             e('div', {
               className: 'PhotoView-Slider__BannerRight',
-              children: [A && Dn && A(Dn), n(W, { className: 'PhotoView-Slider__toolbarIcon', onClick: Sn })],
+              children: [A && Bn && A(Bn), n(W, { className: 'PhotoView-Slider__toolbarIcon', onClick: Sn })],
             }),
           ],
         }),
@@ -1072,8 +1073,8 @@ function Z(o) {
           J,
           {
             item: e,
-            speed: On,
-            easing: Bn,
+            speed: Dn,
+            easing: On,
             visible: q,
             onReachMove: An,
             onReachUp: En,
@@ -1090,8 +1091,8 @@ function Z(o) {
               transform: 'translate3d(' + on + 'px, 0px, 0)',
               transition: an || cn ? void 0 : 'transform ' + Fn + 'ms ' + jn,
             },
-            loadingElement: D,
-            brokenElement: O,
+            loadingElement: B,
+            brokenElement: D,
             onPhotoResize: Rn,
             isActive: bn.current === r,
             expose: nn,
@@ -1099,7 +1100,7 @@ function Z(o) {
           _n ? e.key + '/' + e.src + '/' + r : e.key,
         );
       }),
-      !k &&
+      !P &&
         X &&
         e(t, {
           children: [
@@ -1111,7 +1112,7 @@ function Z(o) {
                 },
                 children: n(S, {}),
               }),
-            (_n || yn + 1 < kn) &&
+            (_n || yn + 1 < Pn) &&
               n('div', {
                 className: 'PhotoView-Slider__ArrowRight',
                 onClick: function () {
@@ -1121,7 +1122,7 @@ function Z(o) {
               }),
           ],
         }),
-      R && Dn && n('div', { className: 'PhotoView-Slider__Overlay', children: R(Dn) }),
+      R && Bn && n('div', { className: 'PhotoView-Slider__Overlay', children: R(Bn) }),
     ],
   });
 }
@@ -1178,14 +1179,14 @@ function en(t) {
         d({ index: n }), o && o(n, s);
       },
     }),
-    k = u(
+    P = u(
       function () {
         return g({}, s, C);
       },
       [s, C],
     );
   return e(y.Provider, {
-    value: k,
+    value: P,
     children: [i, n(Z, g({ images: v, visible: f, index: m, onIndexChange: b.changeIndex, onClose: b.close }, c))],
   });
 }
@@ -1197,44 +1198,45 @@ var tn = function (n) {
     c = n.overlay,
     l = n.width,
     s = n.height,
-    m = n.triggers,
-    p = void 0 === m ? ['onClick'] : m,
-    x = n.children,
-    C = d(y),
-    b =
+    m = n.format,
+    p = n.triggers,
+    x = void 0 === p ? ['onClick'] : p,
+    C = n.children,
+    b = d(y),
+    P =
       ((e = function () {
-        return C.nextId();
+        return b.nextId();
       }),
       (t = r({ sign: !1, fn: void 0 }).current).sign || ((t.sign = !0), (t.fn = e())),
       t.fn),
     k = r(null);
-  h(null == x ? void 0 : x.ref, function () {
+  h(null == C ? void 0 : C.ref, function () {
     return k.current;
   }),
     a(function () {
       return function () {
-        C.remove(b);
+        b.remove(P);
       };
     }, []);
-  var P = w({
+  var _ = w({
       render: function (n) {
         return o && o(n);
       },
       show: function (n, e) {
-        C.show(b),
+        b.show(P),
           (function (n, e) {
-            if (x) {
-              var t = x.props[n];
+            if (C) {
+              var t = C.props[n];
               t && t(e);
             }
           })(n, e);
       },
     }),
-    _ = u(function () {
+    M = u(function () {
       var n = {};
       return (
-        p.forEach(function (e) {
-          n[e] = P.show.bind(null, e);
+        x.forEach(function (e) {
+          n[e] = _.show.bind(null, e);
         }),
         n
       );
@@ -1242,11 +1244,11 @@ var tn = function (n) {
   return (
     a(
       function () {
-        C.update({ key: b, src: i, originRef: k, render: P.render, overlay: c, width: l, height: s });
+        b.update({ key: P, src: i, originRef: k, render: _.render, overlay: c, width: l, height: s, format: m });
       },
       [i],
     ),
-    x ? v.only(f(x, g({}, _, { ref: k }))) : null
+    C ? v.only(f(C, g({}, M, { ref: k }))) : null
   );
 };
 export { en as PhotoProvider, Z as PhotoSlider, tn as PhotoView };

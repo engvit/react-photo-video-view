@@ -122,7 +122,7 @@ const initialState = {
 };
 
 export default function PhotoBox({
-  item: { src, render, width: customWidth = 0, height: customHeight = 0, originRef },
+  item: { src, render, width: customWidth = 0, height: customHeight = 0, originRef, format },
   visible,
   speed,
   easing,
@@ -446,7 +446,7 @@ export default function PhotoBox({
       onTouchStart={isTouchDevice && isActive ? (e) => handleMaskStart(e.touches[0]) : undefined}
     >
       <div
-        className="PhotoView__PhotoBox"
+        className={`PhotoView__PhotoBox PhotoBox_${  format || 'image'}`}
         style={{
           transform: `matrix(${currentScale}, 0, 0, ${currentScale}, ${translateX}, ${translateY})`,
           transition: touched || pause ? undefined : transitionCSS,

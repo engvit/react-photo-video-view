@@ -374,126 +374,127 @@ function A(t) {
     m = i.height,
     g = void 0 === m ? 0 : m,
     p = i.originRef,
-    x = t.visible,
-    w = t.speed,
-    y = t.easing,
-    _ = t.wrapClassName,
-    S = t.className,
-    W = t.style,
-    E = t.loadingElement,
-    A = t.brokenElement,
-    I = t.onPhotoTap,
-    H = t.onMaskTap,
-    L = t.onReachMove,
-    F = t.onReachUp,
+    x = i.format,
+    w = t.visible,
+    y = t.speed,
+    _ = t.easing,
+    S = t.wrapClassName,
+    W = t.className,
+    E = t.style,
+    A = t.loadingElement,
+    I = t.brokenElement,
+    H = t.onPhotoTap,
+    L = t.onMaskTap,
+    F = t.onReachMove,
+    B = t.onReachUp,
     D = t.onPhotoResize,
     O = t.isActive,
-    B = t.expose,
-    q = a(V),
-    z = q[0],
-    K = q[1],
-    U = n.useRef(0),
-    G = N(),
-    J = z.naturalWidth,
-    Q = void 0 === J ? d : J,
-    Z = z.naturalHeight,
-    $ = void 0 === Z ? g : Z,
-    ee = z.width,
-    ne = void 0 === ee ? d : ee,
-    te = z.height,
-    re = void 0 === te ? g : te,
-    ie = z.loaded,
-    oe = void 0 === ie ? !u : ie,
-    ae = z.broken,
-    ue = z.x,
-    ce = z.y,
-    se = z.touched,
-    le = z.stopRaf,
-    de = z.maskTouched,
-    fe = z.rotate,
-    he = z.scale,
-    ve = z.CX,
-    me = z.CY,
-    ge = z.lastX,
-    pe = z.lastY,
-    xe = z.lastCX,
-    we = z.lastCY,
-    ye = z.lastScale,
-    Ce = z.touchTime,
-    be = z.touchLength,
-    Pe = z.pause,
-    je = z.reach,
-    ke = o({
+    q = t.expose,
+    z = a(V),
+    K = z[0],
+    U = z[1],
+    G = n.useRef(0),
+    J = N(),
+    Q = K.naturalWidth,
+    Z = void 0 === Q ? d : Q,
+    $ = K.naturalHeight,
+    ee = void 0 === $ ? g : $,
+    ne = K.width,
+    te = void 0 === ne ? d : ne,
+    re = K.height,
+    ie = void 0 === re ? g : re,
+    oe = K.loaded,
+    ae = void 0 === oe ? !u : oe,
+    ue = K.broken,
+    ce = K.x,
+    se = K.y,
+    le = K.touched,
+    de = K.stopRaf,
+    fe = K.maskTouched,
+    he = K.rotate,
+    ve = K.scale,
+    me = K.CX,
+    ge = K.CY,
+    pe = K.lastX,
+    xe = K.lastY,
+    we = K.lastCX,
+    ye = K.lastCY,
+    Ce = K.lastScale,
+    be = K.touchTime,
+    Pe = K.touchLength,
+    je = K.pause,
+    ke = K.reach,
+    Me = o({
       onScale: function (e) {
-        return Me(f(e));
+        return Re(f(e));
       },
       onRotate: function (e) {
-        fe !== e && (B({ rotate: e }), K(r({ rotate: e }, k(Q, $, e))));
+        he !== e && (q({ rotate: e }), U(r({ rotate: e }, k(Z, ee, e))));
       },
     });
-  function Me(e, n, t) {
-    he !== e && (B({ scale: e }), K(r({ scale: e }, P(ue, ce, ne, re, he, e, n, t), e <= 1 && { x: 0, y: 0 })));
+  function Re(e, n, t) {
+    ve !== e && (q({ scale: e }), U(r({ scale: e }, P(ce, se, te, ie, ve, e, n, t), e <= 1 && { x: 0, y: 0 })));
   }
-  var Re = M(
+  var _e = M(
     function (e, n, t) {
-      if ((void 0 === t && (t = 0), (se || de) && O)) {
-        var i = j(fe, ne, re),
+      if ((void 0 === t && (t = 0), (le || fe) && O)) {
+        var i = j(he, te, ie),
           o = i[0],
           a = i[1];
-        if (0 === t && 0 === U.current) {
-          var u = Math.abs(e - ve) <= 20,
-            c = Math.abs(n - me) <= 20;
-          if (u && c) return void K({ lastCX: e, lastCY: n });
-          U.current = u ? (n > me ? 3 : 2) : 1;
+        if (0 === t && 0 === G.current) {
+          var u = Math.abs(e - me) <= 20,
+            c = Math.abs(n - ge) <= 20;
+          if (u && c) return void U({ lastCX: e, lastCY: n });
+          G.current = u ? (n > ge ? 3 : 2) : 1;
         }
         var s,
-          l = e - xe,
-          d = n - we;
+          l = e - we,
+          d = n - ye;
         if (0 === t) {
-          var h = b(l + ge, he, o, innerWidth)[0],
-            v = b(d + pe, he, a, innerHeight);
+          var h = b(l + pe, ve, o, innerWidth)[0],
+            v = b(d + xe, ve, a, innerHeight);
           (s = (function (e, n, t, r) {
             return (n && 1 === e) || 'x' === r ? 'x' : (t && e > 1) || 'y' === r ? 'y' : void 0;
-          })(U.current, h, v[0], je)),
-            void 0 !== s && L(s, e, n, he);
+          })(G.current, h, v[0], ke)),
+            void 0 !== s && F(s, e, n, ve);
         }
-        if ('x' === s || de) return void K({ reach: 'x' });
-        var m = f(he + ((t - be) / 100 / 2) * he, Q / ne, 0.2);
-        B({ scale: m }), K(r({ touchLength: t, reach: s, scale: m }, P(ue, ce, ne, re, he, m, e, n, l, d)));
+        if ('x' === s || fe) return void U({ reach: 'x' });
+        var m = f(ve + ((t - Pe) / 100 / 2) * ve, Z / te, 0.2);
+        q({ scale: m }), U(r({ touchLength: t, reach: s, scale: m }, P(ce, se, te, ie, ve, m, e, n, l, d)));
       }
     },
     { maxWait: 8 },
   );
-  function _e(e) {
-    return !le && !se && (G.current && K(r({}, e, { pause: x })), G.current);
+  function Ye(e) {
+    return !de && !le && (J.current && U(r({}, e, { pause: w })), J.current);
   }
-  var Ye,
-    Xe,
+  var Xe,
     Ne,
     Se,
     We,
     Ee,
     Te,
     Ve,
-    Ae =
-      ((We = function (e) {
-        return _e({ x: e });
-      }),
-      (Ee = function (e) {
-        return _e({ y: e });
+    Ae,
+    Ie =
+      ((Ee = function (e) {
+        return Ye({ x: e });
       }),
       (Te = function (e) {
-        return G.current && (B({ scale: e }), K({ scale: e })), !se && G.current;
+        return Ye({ y: e });
       }),
-      (Ve = o({
+      (Ve = function (e) {
+        return J.current && (q({ scale: e }), U({ scale: e })), !le && J.current;
+      }),
+      (Ae = o({
         X: function (e) {
-          return We(e);
-        },
-        Y: function (e) {
           return Ee(e);
         },
-        S: function (e) {
+        Y: function (e) {
           return Te(e);
+        },
+        S: function (e) {
+          return Ve(e);
         },
       })),
       function (e, n, t, r, i, o, a, u, c, s, l) {
@@ -513,7 +514,7 @@ function A(t) {
             M = C.y,
             _ = m ? g : k !== e ? k : null,
             X = x ? w : M !== n ? M : null;
-          return null !== _ && Y(e, _, Ve.X), null !== X && Y(n, X, Ve.Y), void (u !== a && Y(a, u, Ve.S));
+          return null !== _ && Y(e, _, Ae.X), null !== X && Y(n, X, Ae.Y), void (u !== a && Y(a, u, Ae.S));
         }
         var N = (e - t) / y,
           S = (n - r) / y,
@@ -551,72 +552,72 @@ function A(t) {
             l = s[0],
             d = s[1];
           if (
-            (u && !E && ((E = !0), m ? Y(r, c, Ve.X) : R(c, r + (r - c), Ve.X)),
-            l && !T && ((T = !0), x ? Y(i, d, Ve.Y) : R(d, i + (i - d), Ve.Y)),
+            (u && !E && ((E = !0), m ? Y(r, c, Ae.X) : R(c, r + (r - c), Ae.X)),
+            l && !T && ((T = !0), x ? Y(i, d, Ae.Y) : R(d, i + (i - d), Ae.Y)),
             E && T)
           )
             return !1;
-          var v = E || Ve.X(c),
-            g = T || Ve.Y(d);
+          var v = E || Ae.X(c),
+            g = T || Ae.Y(d);
           return v && g;
         });
       }),
-    Ie =
-      ((Ye = I),
-      (Xe = function (e, n) {
-        je || Me(1 !== he ? 1 : Math.max(2, Q / ne), e, n);
+    He =
+      ((Xe = H),
+      (Ne = function (e, n) {
+        ke || Re(1 !== ve ? 1 : Math.max(2, Z / te), e, n);
       }),
-      (Ne = n.useRef(0)),
-      (Se = M(
+      (Se = n.useRef(0)),
+      (We = M(
         function () {
-          (Ne.current = 0), Ye.apply(void 0, [].slice.call(arguments));
+          (Se.current = 0), Xe.apply(void 0, [].slice.call(arguments));
         },
         { wait: 300 },
       )),
       function () {
         var e = [].slice.call(arguments);
-        (Ne.current += 1), Se.apply(void 0, e), Ne.current >= 2 && (Se.cancel(), (Ne.current = 0), Xe.apply(void 0, e));
+        (Se.current += 1), We.apply(void 0, e), Se.current >= 2 && (We.cancel(), (Se.current = 0), Ne.apply(void 0, e));
       });
-  function He(e, n) {
-    if (((U.current = 0), (se || de) && O)) {
-      K({ touched: !1, maskTouched: !1, pause: !1, stopRaf: !1, reach: void 0 });
-      var t = f(he, Q / ne);
-      if ((Ae(ue, ce, ge, pe, ne, re, he, t, ye, fe, Ce), F(e, n), ve === e && me === n)) {
-        if (se) return void Ie(e, n);
-        de && H(e, n);
+  function Le(e, n) {
+    if (((G.current = 0), (le || fe) && O)) {
+      U({ touched: !1, maskTouched: !1, pause: !1, stopRaf: !1, reach: void 0 });
+      var t = f(ve, Z / te);
+      if ((Ie(ce, se, pe, xe, te, ie, ve, t, Ce, he, be), B(e, n), me === e && ge === n)) {
+        if (le) return void He(e, n);
+        fe && L(e, n);
       }
     }
   }
-  function Le(e, n, t) {
+  function Fe(e, n, t) {
     void 0 === t && (t = 0),
-      K({
+      U({
         touched: !0,
         CX: e,
         CY: n,
         lastCX: e,
         lastCY: n,
-        lastX: ue,
-        lastY: ce,
-        lastScale: he,
+        lastX: ce,
+        lastY: se,
+        lastScale: ve,
         touchLength: t,
         touchTime: Date.now(),
       });
   }
-  function Fe(e) {
-    K({ maskTouched: !0, CX: e.clientX, CY: e.clientY, lastX: ue, lastY: ce });
+  function Be(e) {
+    U({ maskTouched: !0, CX: e.clientX, CY: e.clientY, lastX: ce, lastY: se });
   }
   v(l ? void 0 : 'mousemove', function (e) {
-    e.preventDefault(), Re(e.clientX, e.clientY);
+    e.preventDefault(), _e(e.clientX, e.clientY);
   }),
     v(l ? void 0 : 'mouseup', function (e) {
-      He(e.clientX, e.clientY);
+      Le(e.clientX, e.clientY);
     }),
     v(
       l ? 'touchmove' : void 0,
       function (e) {
         e.preventDefault();
         var n = C(e);
-        Re.apply(void 0, n);
+        _e.apply(void 0, n);
       },
       { passive: !1 },
     ),
@@ -624,7 +625,7 @@ function A(t) {
       l ? 'touchend' : void 0,
       function (e) {
         var n = e.changedTouches[0];
-        He(n.clientX, n.clientY);
+        Le(n.clientX, n.clientY);
       },
       { passive: !1 },
     ),
@@ -632,14 +633,14 @@ function A(t) {
       'resize',
       M(
         function () {
-          oe && !se && (K(k(Q, $, fe)), D());
+          ae && !le && (U(k(Z, ee, he)), D());
         },
         { maxWait: 8 },
       ),
     ),
     h(
       function () {
-        O && B(r({ scale: he, rotate: fe }, ke));
+        O && q(r({ scale: ve, rotate: he }, Me));
       },
       [O],
     );
@@ -745,69 +746,69 @@ function A(t) {
         w,
         b,
       ];
-    })(x, p, oe, ue, ce, ne, re, he, w, function (e) {
-      return K({ pause: e });
+    })(w, p, ae, ce, se, te, ie, ve, y, function (e) {
+      return U({ pause: e });
     }),
     Oe = De[4],
-    Be = De[6],
-    qe = 'transform ' + w + 'ms ' + y,
-    ze = {
-      className: S,
+    qe = De[6],
+    ze = 'transform ' + y + 'ms ' + _,
+    Ke = {
+      className: W,
       onMouseDown: l
         ? void 0
         : function (e) {
-            e.stopPropagation(), 0 === e.button && Le(e.clientX, e.clientY, 0);
+            e.stopPropagation(), 0 === e.button && Fe(e.clientX, e.clientY, 0);
           },
       onTouchStart: l
         ? function (e) {
-            e.stopPropagation(), Le.apply(void 0, C(e));
+            e.stopPropagation(), Fe.apply(void 0, C(e));
           }
         : void 0,
       onWheel: function (e) {
-        if (!je) {
-          var n = f(he - e.deltaY / 100 / 2, Q / ne);
-          K({ stopRaf: !0 }), Me(n, e.clientX, e.clientY);
+        if (!ke) {
+          var n = f(ve - e.deltaY / 100 / 2, Z / te);
+          U({ stopRaf: !0 }), Re(n, e.clientX, e.clientY);
         }
       },
       style: {
         width: De[2] + 'px',
         height: De[3] + 'px',
         opacity: De[5],
-        objectFit: 4 === Be ? void 0 : De[7],
-        transform: fe ? 'rotate(' + fe + 'deg)' : void 0,
+        objectFit: 4 === qe ? void 0 : De[7],
+        transform: he ? 'rotate(' + he + 'deg)' : void 0,
         transition:
-          Be > 2 ? qe + ', opacity ' + w + 'ms ease, height ' + (Be < 4 ? w / 2 : Be > 4 ? w : 0) + 'ms ' + y : void 0,
+          qe > 2 ? ze + ', opacity ' + y + 'ms ease, height ' + (qe < 4 ? y / 2 : qe > 4 ? y : 0) + 'ms ' + _ : void 0,
       },
     };
   return e.jsx('div', {
-    className: 'PhotoView__PhotoWrap' + (_ ? ' ' + _ : ''),
-    style: W,
-    onMouseDown: !l && O ? Fe : void 0,
+    className: 'PhotoView__PhotoWrap' + (S ? ' ' + S : ''),
+    style: E,
+    onMouseDown: !l && O ? Be : void 0,
     onTouchStart:
       l && O
         ? function (e) {
-            return Fe(e.touches[0]);
+            return Be(e.touches[0]);
           }
         : void 0,
     children: e.jsx('div', {
-      className: 'PhotoView__PhotoBox',
+      className: 'PhotoView__PhotoBox PhotoBox_' + (x || 'image'),
       style: {
         transform: 'matrix(' + Oe + ', 0, 0, ' + Oe + ', ' + De[0] + ', ' + De[1] + ')',
-        transition: se || Pe ? void 0 : qe,
+        transition: le || je ? void 0 : ze,
         willChange: O ? 'transform' : void 0,
       },
       children: u
         ? e.jsx(
             T,
-            r({ src: u, loaded: oe, broken: ae }, ze, {
+            r({ src: u, loaded: ae, broken: ue }, Ke, {
               onPhotoLoad: function (e) {
-                K(r({}, e, e.loaded && k(e.naturalWidth || 0, e.naturalHeight || 0, fe)));
+                U(r({}, e, e.loaded && k(e.naturalWidth || 0, e.naturalHeight || 0, he)));
               },
-              loadingElement: E,
-              brokenElement: A,
+              loadingElement: A,
+              brokenElement: I,
             }),
           )
-        : c && c({ attrs: ze, scale: Oe, rotate: fe }),
+        : c && c({ attrs: Ke, scale: Oe, rotate: he }),
     }),
   });
 }
@@ -849,9 +850,9 @@ function H(t) {
     H = t.images,
     L = t.index,
     F = void 0 === L ? 0 : L,
-    D = t.onIndexChange,
-    O = t.visible,
-    B = t.onClose,
+    B = t.onIndexChange,
+    D = t.visible,
+    O = t.onClose,
     q = t.afterClose,
     z = t.portalContainer,
     K = a(I),
@@ -876,7 +877,7 @@ function H(t) {
     fe = U.onRotate,
     he = t.hasOwnProperty('index'),
     ve = he ? F : Q,
-    me = he ? D : Z,
+    me = he ? B : Z,
     ge = n.useRef(ve),
     pe = H.length,
     xe = H[ve],
@@ -911,7 +912,7 @@ function H(t) {
           r(), 2 === i.current && (a(!1), t && t()), (i.current = 0);
         },
       ];
-    })(O, q),
+    })(D, q),
     Ce = ye[0],
     be = ye[1],
     Pe = ye[2];
@@ -924,7 +925,7 @@ function H(t) {
   );
   var je = o({
       close: function (e) {
-        fe && fe(0), G({ overlay: !0, lastBg: oe }), B(e);
+        fe && fe(0), G({ overlay: !0, lastBg: oe }), O(e);
       },
       changeIndex: function (e, n) {
         void 0 === n && (n = !1);
@@ -977,7 +978,7 @@ function H(t) {
     }
   }
   v('keydown', function (e) {
-    if (O)
+    if (D)
       switch (e.key) {
         case 'ArrowLeft':
           Me(ve - 1, !0);
@@ -1005,12 +1006,12 @@ function H(t) {
   })(H, ve, we);
   if (!Ce) return null;
   var Se = ue && !be,
-    We = O ? oe : ae,
+    We = D ? oe : ae,
     Ee = de &&
       fe && {
         images: H,
         index: ve,
-        visible: O,
+        visible: D,
         onClose: ke,
         onIndexChange: Me,
         overlayVisible: Se,
@@ -1028,7 +1029,7 @@ function H(t) {
     className:
       'PhotoView-Portal' +
       (Se ? '' : ' PhotoView-Slider__clean') +
-      (O ? '' : ' PhotoView-Slider__willClose') +
+      (D ? '' : ' PhotoView-Slider__willClose') +
       (N ? ' ' + N : ''),
     role: 'dialog',
     onClick: function (e) {
@@ -1036,7 +1037,7 @@ function H(t) {
     },
     container: z,
     children: [
-      O && e.jsx(y, {}),
+      D && e.jsx(y, {}),
       e.jsx('div', {
         className:
           'PhotoView-Slider__Backdrop' +
@@ -1069,7 +1070,7 @@ function H(t) {
             item: n,
             speed: Te,
             easing: Ve,
-            visible: O,
+            visible: D,
             onReachMove: Ye,
             onReachUp: Xe,
             onPhotoTap: function () {
@@ -1193,44 +1194,45 @@ var L = ['children', 'onIndexChange', 'onVisibleChange'],
       s = e.overlay,
       l = e.width,
       d = e.height,
-      f = e.triggers,
-      h = void 0 === f ? ['onClick'] : f,
-      v = e.children,
-      m = n.useContext(u),
-      g =
+      f = e.format,
+      h = e.triggers,
+      v = void 0 === h ? ['onClick'] : h,
+      m = e.children,
+      g = n.useContext(u),
+      p =
         ((t = function () {
-          return m.nextId();
+          return g.nextId();
         }),
         (i = n.useRef({ sign: !1, fn: void 0 }).current).sign || ((i.sign = !0), (i.fn = t())),
         i.fn),
-      p = n.useRef(null);
-    n.useImperativeHandle(null == v ? void 0 : v.ref, function () {
-      return p.current;
+      x = n.useRef(null);
+    n.useImperativeHandle(null == m ? void 0 : m.ref, function () {
+      return x.current;
     }),
       n.useEffect(function () {
         return function () {
-          m.remove(g);
+          g.remove(p);
         };
       }, []);
-    var x = o({
+    var w = o({
         render: function (e) {
           return c && c(e);
         },
         show: function (e, n) {
-          m.show(g),
+          g.show(p),
             (function (e, n) {
-              if (v) {
-                var t = v.props[e];
+              if (m) {
+                var t = m.props[e];
                 t && t(n);
               }
             })(e, n);
         },
       }),
-      w = n.useMemo(function () {
+      y = n.useMemo(function () {
         var e = {};
         return (
-          h.forEach(function (n) {
-            e[n] = x.show.bind(null, n);
+          v.forEach(function (n) {
+            e[n] = w.show.bind(null, n);
           }),
           e
         );
@@ -1238,11 +1240,11 @@ var L = ['children', 'onIndexChange', 'onVisibleChange'],
     return (
       n.useEffect(
         function () {
-          m.update({ key: g, src: a, originRef: p, render: x.render, overlay: s, width: l, height: d });
+          g.update({ key: p, src: a, originRef: x, render: w.render, overlay: s, width: l, height: d, format: f });
         },
         [a],
       ),
-      v ? n.Children.only(n.cloneElement(v, r({}, w, { ref: p }))) : null
+      m ? n.Children.only(n.cloneElement(m, r({}, y, { ref: x }))) : null
     );
   });
 //# sourceMappingURL=react-photo-view.js.map

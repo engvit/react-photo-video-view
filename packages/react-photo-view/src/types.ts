@@ -28,6 +28,7 @@ export interface DataType {
    * 指定渲染节点高度
    */
   height?: number;
+  format?: string;
   /**
    * 触发 ref
    */

@@ -27,7 +27,7 @@ export interface PhotoBoxProps {
   isActive: boolean;
 }
 export default function PhotoBox({
-  item: { src, render, width: customWidth, height: customHeight, originRef },
+  item: { src, render, width: customWidth, height: customHeight, originRef, format },
   visible,
   speed,
   easing,

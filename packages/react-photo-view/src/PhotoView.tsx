@@ -30,6 +30,7 @@ export interface PhotoViewProps {
   /**
    * 子节点，一般为缩略图
    */
+  format?: string;
   children?: React.ReactElement;
   /**
    * 触发的事件
@@ -43,6 +44,7 @@ const PhotoView: React.FC<PhotoViewProps> = ({
   overlay,
   width,
   height,
+  format,
   triggers = ['onClick'],
   children,
 }) => {
@@ -94,6 +96,7 @@ const PhotoView: React.FC<PhotoViewProps> = ({
       overlay,
       width,
       height,
+      format,
     });
   }, [src]);
 
