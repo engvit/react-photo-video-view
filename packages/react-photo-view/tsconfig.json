@@ -22,7 +22,7 @@
     "isolatedModules": true,
     "declaration": true,
     "noEmitOnError": true,
-    "jsx": "react"
+    "jsx": "react-jsx"
   },
   "include": ["src", "typings.d.ts"],
   "exclude": ["__tests__"]
