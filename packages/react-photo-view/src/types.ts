@@ -29,6 +29,9 @@ export interface DataType {
    */
   height?: number;
   format?: string;
+  title?: string;
+  title2?: string;
+  caption?: string;
   /**
    * 触发 ref
    */
